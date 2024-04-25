@@ -6,3 +6,43 @@ body {
     font-family: 'Courier New', monospace;    
     text-align: center;
 }
+
+#main {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: center;
+    grid-gap: 50px;
+    margin-top: 30px;
+}
+
+#p1, #p2 {
+    display: grid;
+    grid-auto-flow: column;
+}
+
+#main > div > div {
+    display: grid;
+    width: 50px;
+}
+
+#main > div > div > div {
+    width: 50px;
+    height: 50px;
+    border: 2px solid white;
+}
+
+.ship {
+    background-color: gray;
+}
+
+.missedShot {
+    background-color: blue;
+}
+
+.hitShot {
+    background-color: red;
+}
+
+#place {
+    margin-top: 60px;
+}

@@ -1,5 +1,5 @@
-const index = require('./index');
-let ship = index.Ship(3);
+import { Ship, Gameboard } from './fact';
+let ship = Ship(3);
 
 test('Ship length', () => {
     expect(ship.length).toBe(3);
@@ -29,12 +29,48 @@ test('Ship sunk', () => {
     expect(ship.isSunk()).toBe(true);
 });
 
-let board1 = index.Gameboard();
+let board1 = Gameboard();
 
-test('Place ship', () => {
-    expect(board1.placeShip(0, 0, 1)).toBe(undefined);
+// test('Place ship', () => {
+//     expect(board1.placeShip(0, 0, 1)).toBe(undefined);
+// });
+
+// test('Check ship', () => {
+//     expect(board1.board[0][0]).toBe(1);
+// });
+
+// test('Receive hit', () => {
+//     expect(board1.receiveAttack(0, 0)).toBe(undefined);
+// });
+
+// test('Receive missed hit', () => {
+//     expect(board1.receiveAttack(1, 1)).toBe(undefined);
+// });
+
+// test('Check ship state', () => {
+//     expect(board1.ships[0].timesHit).toBe(1);
+// });
+
+// test('Check missedShots array', () => {
+//     expect(board1.missedShots).toContain('11');
+// });
+
+// test('Check if allShipsSunk', () => {
+//     expect(board1.allShipsSunk()).toBe(true);
+// });
+
+// test('Place ship', () => {
+//     expect(board1.placeShip(5, 5, 1)).toBe(undefined);
+// });
+
+// test('Check if allShipsSunk', () => {
+//     expect(board1.allShipsSunk()).toBe(false);
+// });
+
+test('Place long ship', () => {
+    expect(board1.placeShip(5, 5, 3, 'h')).toBe(undefined);
 });
 
-test('Check ship', () => {
-    expect(board1.board[0][0]).toBe(1);
+test('Check long ship', () => {
+    expect(board1.board[7][5]).toBe(1);
 });

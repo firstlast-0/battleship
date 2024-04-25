@@ -1,39 +1,40 @@
-// import './style.css';
+import { Ship, Gameboard, Player } from './fact';
+import { displayBoard } from './dom';
+import './style.css';
 
-function Ship(length) {
-    this.length = length;
+let p1 = document.querySelector('#p1');
+let human = Player('human');
+let x = document.querySelector('#posx');
+let y = document.querySelector('#posy');
+let dir = document.querySelector('#dir');
+let msg = document.querySelector('#place > div');
+let submit = document.querySelector('#place > button');
+let pieces = [
+    ['Carrier', 5],
+    ['Battleship', 4],
+    ['Destroyer', 3],
+    ['Submarine', 3],
+    ['Patrol Boat', 2],
+];
+let ind = 0;
+msg.textContent = `Select position for ${pieces[ind][0]}`;
+submit.addEventListener('click', () => {
+    console.log(x.value, y.value, pieces[ind][1], dir.value);
+    human.board.placeShip(x.value, y.value, pieces[ind][1], dir.value);
+    ind++;
+    msg.textContent = `Select position for ${pieces[ind][0]}`;
+    p1.replaceChildren();
+    displayBoard(human, p1);
+});
 
-    function hit() {
-        this.timesHit++;
-    }
+displayBoard(human, p1);
 
-    function isSunk() {
-        if (this.length === this.timesHit) return true;
-        return false;
-    }
+let p2 = document.querySelector('#p2');
+let comp = Player('comp');
+comp.board.placeShip(2, 2, 1, 'v');
+comp.board.placeShip(9, 8, 2, 'v');
+displayBoard(comp, p2);
 
-    return { length, timesHit: 0, isSunk, hit };
-}
+p2.addEventListener('click', () => {});
 
-function Gameboard() {
-    let board = [];
-    for (let i = 0; i < 10; i++) board[i] = [];
-    let usedIDS = [];
-
-    function placeShip(x, y, length) {
-        let ship = Ship(length);
-        let id = 1;
-        while (usedIDS.includes(id)) id++;
-        ship.id = id;
-
-        board[x][y] = id;
-    }
-
-    function receiveAttack(x, y) {
-        
-    }
-
-    return { board, placeShip };
-}
-
-module.exports = { Ship, Gameboard };
+export { human, p1 };
