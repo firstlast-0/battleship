@@ -19,10 +19,23 @@ let pieces = [
 let ind = 0;
 msg.textContent = `Select position for ${pieces[ind][0]}`;
 submit.addEventListener('click', () => {
-    console.log(x.value, y.value, pieces[ind][1], dir.value);
-    human.board.placeShip(x.value, y.value, pieces[ind][1], dir.value);
+    human.board.placeShip(+x.value, +y.value, pieces[ind][1], dir.value);
+
+    let cX, cY, cDir, check;
+    do {
+        cX = Math.floor(Math.random() * 10);
+        cY = Math.floor(Math.random() * 10);
+        cDir = Math.floor(Math.random() * 2) === 0 ? 'h' : 'v';
+        if (cDir === 'h') {
+        }
+        check = cDir === 'h' ? cX + pieces[ind][1] : cY + pieces[ind][1];
+    } while (check > 10);
+    comp.board.placeShip(cX, cY, pieces[ind][1], cDir);
+    p2.replaceChildren();
+    displayBoard(comp, p2);
+
     ind++;
-    msg.textContent = `Select position for ${pieces[ind][0]}`;
+    msg.textContent = ind < 5 ? `Select position for ${pieces[ind][0]}` : '';
     p1.replaceChildren();
     displayBoard(human, p1);
 });
@@ -31,8 +44,8 @@ displayBoard(human, p1);
 
 let p2 = document.querySelector('#p2');
 let comp = Player('comp');
-comp.board.placeShip(2, 2, 1, 'v');
-comp.board.placeShip(9, 8, 2, 'v');
+// comp.board.placeShip(2, 2, 1, 'v');
+// comp.board.placeShip(9, 8, 2, 'v');
 displayBoard(comp, p2);
 
 p2.addEventListener('click', () => {});

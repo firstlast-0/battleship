@@ -29,7 +29,7 @@ function Gameboard() {
         ship.id = id;
         usedIDS.push(id);
         ships.push(ship);
-        console.log(board);
+        
         if (dir === 'h') {
             for (let i = 0; i < length; i++) board[x + i][y] = id;
         } else {

@@ -26,8 +26,8 @@ function displayBoard(player, cont) {
                     displayBoard(player, cont);
                 });
             }
-
-            if (player.board.board[i][j] > 0 && player.type === 'human') d.classList.add('ship');
+            // && player.type === 'human'
+            if (player.board.board[i][j] > 0 ) d.classList.add('ship');
             else if (player.board.missedShots.includes(i.toString() + j)) d.classList.add('missedShot');
             if (player.board.hitShots.includes(i.toString() + j)) d.classList.add('hitShot');
             div.appendChild(d);
