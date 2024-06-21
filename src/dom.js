@@ -1,4 +1,4 @@
-import { human, p1 } from './index';
+import { human, p1 } from './index.js';
 
 function displayBoard(player, cont) {
     for (let i = 0; i < player.board.board.length; i++) {
