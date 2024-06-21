@@ -7,6 +7,10 @@ body {
     text-align: center;
 }
 
+.heading {
+    font-size: 1.4rem;
+}
+
 #main {
     display: grid;
     grid-auto-flow: column;
@@ -45,4 +49,8 @@ body {
 
 #place {
     margin-top: 60px;
+}
+
+#msg {
+    font-size: 1.5rem;
 }

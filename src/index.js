@@ -17,7 +17,7 @@ let pieces = [
     ['Patrol Boat', 2],
 ];
 let ind = 0;
-msg.textContent = `Select position for ${pieces[ind][0]}`;
+msg.textContent = `Input coordinates for ${pieces[ind][0]} position (length: ${pieces[ind][1]})`;
 submit.addEventListener('click', () => {
     human.board.placeShip(+x.value, +y.value, pieces[ind][1], dir.value);
 
@@ -35,7 +35,7 @@ submit.addEventListener('click', () => {
     displayBoard(comp, p2);
 
     ind++;
-    msg.textContent = ind < 5 ? `Select position for ${pieces[ind][0]}` : '';
+    msg.textContent = ind < 5 ? `Input coordinates for ${pieces[ind][0]} position (length: ${pieces[ind][1]})` : 'Click on the right board to attack';
     p1.replaceChildren();
     displayBoard(human, p1);
 });
